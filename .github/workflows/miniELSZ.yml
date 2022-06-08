@@ -28,4 +28,4 @@ jobs:
 
           $deploymentName = Get-Date -Format "yyyyMMddHHmmss"
 
-          az deployment group create --location eastus --resource-group ESLZ --template-file ./main.bicep --name $deploymentName
+          az deployment group create --resource-group ESLZ --template-file ./main.bicep --name $deploymentName
