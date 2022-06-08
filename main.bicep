@@ -4,7 +4,7 @@ param location string = resourceGroup().location
 
 //create law
 resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2020-10-01' = {
-  name: 'law-${prefix}'
+  name: 'loganalytics${prefix}'
   location: location
   properties: {
     sku: {
