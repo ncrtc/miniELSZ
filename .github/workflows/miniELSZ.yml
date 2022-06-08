@@ -1,11 +1,8 @@
-name: garnerstuff-ci
+name: ELSZ-ci
 
 on:
   push:
     branches: [ main ]
-    paths:
-    - 'rg/garnerstuff/**'
-    - '.github/workflows/garnerstuff.yml'
   pull_request:
     branches: [ main ]
 
@@ -28,10 +25,7 @@ jobs:
       - name: Run deploy script
         shell: pwsh
         run: |
-          Set-Location -Path ./rg/garnerstuff
-          $rgname = (Get-Location).Path.Split("/")[(Get-Location).Path.Split("/").Count-1]
-          $rgname = "m-" + $rgname
 
           $deploymentName = Get-Date -Format "yyyyMMddHHmmss"
 
-          az deployment sub create --location eastus --template-file ./main.bicep --name $deploymentName --parameters rgName=$rgname
+          az deployment group create --location eastus --resource-group ESLZ --template-file ./main.bicep --name $deploymentName
